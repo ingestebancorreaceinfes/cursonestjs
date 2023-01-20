@@ -1,6 +1,6 @@
 import { Controller, UsePipes, ValidationPipe } from '@nestjs/common';
-import { CommonsController } from 'src/commons/commons.controller';
-import { CommonsService } from 'src/commons/commons.service';
+import { CommonsController } from 'src/common/commons.controller';
+import { CommonsService } from 'src/common/commons.service';
 import { Pregunta } from './entities/pregunta.entity';
 import { PreguntasService } from './preguntas.service';
 

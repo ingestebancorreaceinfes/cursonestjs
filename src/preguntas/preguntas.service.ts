@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { CommonsService } from "src/commons/commons.service";
+import { CommonsService } from "src/common/commons.service";
 import { Repository } from "typeorm";
 import { Pregunta } from "./entities/pregunta.entity";
 
