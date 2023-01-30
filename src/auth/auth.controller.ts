@@ -1,6 +1,7 @@
 import { Controller, Post, Body, Get, UseGuards, SetMetadata } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth.service';
+import { Auth } from './decorators';
 import { GetUser } from './decorators/get-user.decorador';
 import { RoleProtected } from './decorators/role-protected.decorator';
 import { LoginUserDto, CreateUserDto } from './dto/index';
@@ -34,8 +35,16 @@ export class AuthController {
     }
   }
 
+  @Get('private2')
+  @Auth( ValidRoles.admin )
+  privateRoute2(
+    @GetUser() user: User
+  ){
+    return {
+      message: 'Hola Mundo Private',
+      user
+    }
+  }
 
-  
+ 
 }
-
-

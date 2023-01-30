@@ -1,15 +1,16 @@
 import { HttpStatus, HttpCode, Delete, NotFoundException } from "@nestjs/common";
-import { Body, Get, Param, Post } from "@nestjs/common/decorators";
+import { Body, Get, Param, Post, Query } from "@nestjs/common/decorators";
 import { ParseIntPipe } from "@nestjs/common/pipes";
 import { CommonsService } from "./commons.service";
+import { PaginationDto } from "./dto/pagination.dto";
 
 export abstract class CommonsController<T> {
 
     abstract getService(): CommonsService<T>;
 
     @Get()
-    async findAll(): Promise<T[]>{
-        return await this.getService().findAll();
+    async findAll(@Query() paginationDto:PaginationDto): Promise<T[]>{
+        return await this.getService().findAll(paginationDto);
     }
     
     @Get(':id')

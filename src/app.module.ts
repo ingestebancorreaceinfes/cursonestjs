@@ -9,16 +9,29 @@ import { TareasModule } from './tareas/tareas.module';
 import { PreguntasModule } from './preguntas/preguntas.module';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
+import { CommonModule } from './common/common.module';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
+    // TypeOrmModule.forRoot({
+    //   type: 'postgres',
+    //   host: 'localhost',
+    //   port: 5432,
+    //   username: 'postgres',
+    //   password: 'Ec1007256470',
+    //   database: 'enlazaa_db',
+    //   autoLoadEntities: true,
+    //   synchronize: true
+    // }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: 'Ec1007256470',
-      database: 'enlazaa_db',
+      host: process.env.DB_HOST,
+      port: +process.env.DB_PORT,
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
       autoLoadEntities: true,
       synchronize: true
     }),
@@ -29,6 +42,7 @@ import { AuthModule } from './auth/auth.module';
     PreguntasModule,
     UsersModule,
     AuthModule,
+    CommonModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -14,5 +14,5 @@ export class PreguntasService extends CommonsService<Pregunta>{
     getRepository(): Repository<Pregunta> {
         return this.preguntaRepo;
     }
-    
+
 }
